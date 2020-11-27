@@ -94,7 +94,7 @@ def main(cfg):
         end_time   = str(hour) + ":" + str(minute) + ":" + "30"
 
         # extract frame per minute with ffmpeg
-        command = "ffmpeg -ss {:s} -i {:s} -to {:s} -vf fps=1/60 {:s}/img%04d.jpg".format(start_time, video_abs_path, end_time, cfg.dir)
+        command = "ffmpeg -ss {:s} -i {:s} -to {:s} -vf fps=1/60 {:s}/img%04d.jpg".format(start_time, video_abs_path, end_time, cfg.frames_dir)
         process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
 
