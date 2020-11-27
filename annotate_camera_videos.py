@@ -90,7 +90,13 @@ def main(cfg):
         hour, minute, second = getVideoLength(video_abs_path)
 
         first_hh, first_mm, first_ss = digits_trt.classify(first_frame)
-        start_time = "00:" + "00:" + str(30 - int(first_ss))
+        if int(first_ss) == 30:
+            start_time = "00:" + "00:" + first_ss
+        elif int(first_ss) < 30:
+            start_time = "00:" + "00:" + str(30 - int(first_ss))
+        else:
+            start_time = "00:" + "00:" + str(60 - int(first_ss))
+
         end_time   = str(hour) + ":" + str(minute) + ":" + "30"
 
         # extract frame per minute with ffmpeg
